@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 echo "# python3-deep-dive-udemy" >> README.md
 git init
 git add README.md
