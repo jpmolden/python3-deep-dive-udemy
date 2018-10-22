@@ -8,11 +8,15 @@ class Rectangle:
         # Properties
         # No data encapsulation
         # Convention to use sunder to make "private"
-        self._width = width
-        self._height = height
+        # self._width = width
+        # self._height = height
+
+        # Can use either private style with _ or without as long as the property methods are implemented
+        self.width = width
+        self.height = height
 
     # property and setter decorators can be used to allow added functionality
-    # without breaking backwards compatibility
+    # without breaking BACKWARDS compatibility
 
     # Function - Instance method
     # Decorator to make "width" a property which can be accessed
