@@ -5,5 +5,6 @@
 my_val_1 = 10
 my_val_2 = 123564564564564
 
-#
+# Don't typically use id
 print(hex(id(my_val_1)))
+print(hex(id(my_val_2)))
