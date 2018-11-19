@@ -33,11 +33,45 @@ print('\tUnpacking sets and dics - Unordered Types')
 s = {'a', 'b','c', 'd'}
 a, b, c, d = s
 print("\tSets are not ordered!!!!", a, b, c, d)
+print('\tPositional Unpacking')
+a, b, c = [1, 'a', 12]
+(a, b, c) = [1, 'a', 12]
+print("\t", a,b,c)
+
+print('*** Unpack Tuple into Tuple ***')
+(a, b) = (1, 2)
+print('\tPython evaluates RHS first')
+print('\tTuple into a tuple')
+print('\ta, b, c = 45, "s", 3.14')
+a, b, c = 45, "s", 3.14
 
 
+print('*** Swap two variables ***')
+a, b = b, a
 
 
+print('*** Strings are iterable ***')
+a, b, c = "XYZ"
 
+
+d = {'a': 1,
+     'b': 2,
+     'c': 3,
+     'd': 4,}
+
+
+print('\tUnpacking dicionary values - Order doent matter')
+
+d, a, b, c = d.values()
+print("\t", a,b,c,d)
+
+d = {'a': 1,
+     'b': 2,
+     'c': 3,
+     'd': 4,}
+
+d, a, b, c = d.items()
+print("\t", a,b,c,d)
 
 
 
