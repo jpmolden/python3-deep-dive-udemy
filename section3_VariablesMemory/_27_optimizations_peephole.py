@@ -46,8 +46,10 @@ def my_func_2():
 print(my_func_2.__code__.co_consts)
 
 print("\n*** Set Membership is faster ***")
+
 import string
 import time
+
 print(string.ascii_letters)
 char_list = list(string.ascii_letters)
 char_tuple = tuple(string.ascii_letters)
