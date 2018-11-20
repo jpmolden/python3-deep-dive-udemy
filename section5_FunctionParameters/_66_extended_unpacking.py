@@ -57,7 +57,7 @@ print("\t", s)
 l = [*d1, *d2, *d3]
 print("\t", l)
 
-print('\n*** ** Operator ***')
+print('\n*** ** Operator (Dictionary key value merge ***')
 print('\td3 Takes precidence!!!!')
 print('\tMerging dictionaries')
 d4 = {**d1, **d2, **d3}
@@ -73,6 +73,24 @@ print("\ta={}\n\tb={}\n\tc={}\n\td={} (Last)".format(a,b,c,d))
 print('\n\tNested unpacking with *')
 a, *b, (c, *d) = [1,2,3,'python']
 print("\ta={}\n\tb={}\n\tc={}\n\td={} (Last)".format(a,b,c,d))
+
+
+print('\n*** Set union unpacking')
+s1 = {1,2,3}
+s2 = {1,2,4}
+s3 = {1,2,5}
+s4 = {1,2,6}
+
+# Unpacking into set
+set5 = {*s1, *s2, *s3, *s4}
+print("\t", set5)
+
+
+# Unpacking into list
+list5 = {*s1, *s2, *s3, *s4}
+print("\t", list5)
+
+
 
 
 
