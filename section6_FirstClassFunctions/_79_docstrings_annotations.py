@@ -50,6 +50,10 @@ def my_func3(a: str = 'xyz',
             *args: 'Additional parameters',
             b: int = 1,
             **kwargs: "Additional keyword only params") -> str:
+    """Some docstring
+    that does
+    somthing
+    """
     print(a, args, b, kwargs)
     pass
 
@@ -60,6 +64,43 @@ print('\tThese don\'t affect code at all they only help document code')
 print('\tSee Sphinx')
 print('\tType hints are >3.5 onwards, builds on annotations')
 
+print(my_func3.__doc__)
+print(my_func3.__annotations__)
+
+
+def my_func4(a: 'Annotation for b',
+             b: 'Annotation for B') -> 'Somthing':
+    """Docstring here """
+    return a + b
+
+print(my_func4.__doc__)
+print(my_func4.__annotations__)
+
+
+x = 10
+y = 11
+# N.B These annotactions are evaluated ONCE at def!! not execution
+def my_func5(a: "Som char") -> "Char a reapeated " + str(max(x,y)) + " times":
+    return a * max(x, y)
+
+x = 1
+y = 1
+
+print(my_func5.__doc__)
+print(my_func5.__annotations__)
+
+
+def my_func6(a: str,
+            b: 'int > 0' = 1,
+            *args: "Extra positional args",
+            k1: "Some kw arg",
+            k2: "Another kw arg" = 100,
+            **kwargs: "Some extra kw-only args") -> "somthing":
+    print(a, b, args, k1, k2, kwargs)
+
+
+print(my_func6.__annotations__)
+my_func6(1,77, 77,8,4,k1="d", k2="no", x=7, y=7)
 
 
 
