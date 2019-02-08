@@ -1,5 +1,3 @@
-
-
 # Called anonymous functions
 
 # lambda [param list (optional]: expression
@@ -93,12 +91,4 @@ print("\t", apply_func(lambda x, y: x + y, 1, 2))
 print("\t", apply_func(lambda x, *, y: x + y, 1, y=2))
 print("\t", apply_func(lambda *args: sum(args), 1,2,3,5,5,5,7))
 
-print("\t", apply_func(apply_func(sum, (1,2,3,5,5,5,7)))
-
-
-
-
-
-
-
-
+# print("\t", apply_func(apply_func(sum, (1,2,3,5,5,5,7))))
