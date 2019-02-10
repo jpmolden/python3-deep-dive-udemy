@@ -260,11 +260,3 @@ print(p1 != p2)
 
 print('\tThe total_ordering class decorator can be used to complete the comparison operators '
       'without specifying each')
-
-
-
-
-
-
-
-
