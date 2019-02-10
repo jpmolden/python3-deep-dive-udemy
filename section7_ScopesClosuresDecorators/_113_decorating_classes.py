@@ -1,11 +1,8 @@
 # print('\tIf it is then a class can now function like a decorator factory')
 # print('\tDecorating my_func with a MyClass instance, which is callable')
-#
-#
-#
-#
-# print('\n*** The Long Way Round, Equivalent to the @ syntax***')
 
+# print('\n*** The Long Way Round, Equivalent to the @ syntax***')
+from builtins import object, complex
 from fractions import Fraction
 f = Fraction(2,3)
 print(f.denominator)
@@ -152,9 +149,117 @@ print(p2 is p3)
 print(p1 == p2)
 print(p1 < p3)
 print(p1 < p2)
+# print(p1 >= p2)
+print('\n\tWith only eq and lt it is possible to construct or infer the others (>, >=, <=')
 
 
+print('\n\n*** Using class decorators for ordering operations***')
+print('\t* a <= b iff a < b or a == b')
+print('\t* a >  b iff not(a<b) and a != b')
+print('\t* a >= b iff not(a<b)')
 
+print("\t*This is a simple illustration it's not good code")
+def complete_ordering(cls):
+    if "__eq__" in dir(cls) and "__lt__" in dir(cls):
+        # Generally speaking do not monket patch __ methods like this
+        cls.__le__ = lambda self, other: self < other or self == other
+        cls.__gt__ = lambda self, other: not(self < other) and not (self == other)
+        cls.__ge__ = lambda self, other: not(self < other)
+    # Not needed since we are mutating the class unless we want to use the @decorator syntax
+    return cls
+
+
+print('\n\n*** Using the complete ordering decorator ***')
+
+
+@complete_ordering
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __abs__(self):
+        return sqrt(self.x ** 2 + self.y ** 2)
+
+    def __repr__(self):
+        return "Point({0}, {1})".format(self.x, self.y)
+
+    def __eq__(self, other):
+        if isinstance(other, Point):
+            return self.x == other.x and self.y == other.y
+        else:
+            return False
+
+    def __lt__(self, other):
+        if isinstance(other, Point):
+            return abs(self) < abs(other)
+        else:
+            return NotImplemented
+
+
+p1, p2, p3 = Point(2, 3), Point(2, 3), Point(-3.1, 2.1)
+print(p1)
+print(p2)
+print(p3)
+print(p1 is p2)
+print(p2 is p3)
+# == defaults to the memory address unless the __eq__ method is set
+print(p1 == p2)
+print(p1 < p3)
+print(p1 < p2)
+# Implemented by the decorator for the class
+print(p1 >= p2)
+print(p1 != p2)
+
+
+print('\n\n*** Python has a standard library for this!!  ***')
+
+from functools import total_ordering
+print('\tUsing total_ordering decorator')
+print('\tThis decorator figures out all the missing comparison operators'
+      ' and completes the set')
+
+
+@total_ordering
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __abs__(self):
+        return sqrt(self.x ** 2 + self.y ** 2)
+
+    def __repr__(self):
+        return "Point({0}, {1})".format(self.x, self.y)
+
+    def __eq__(self, other):
+        if isinstance(other, Point):
+            return self.x == other.x and self.y == other.y
+        else:
+            return False
+
+    def __gt__(self, other):
+        if isinstance(other, Point):
+            return abs(self) > abs(other)
+        else:
+            return NotImplemented
+
+
+p1, p2, p3 = Point(2, 3), Point(2, 3), Point(-3.1, 2.1)
+print(p1)
+print(p2)
+print(p3)
+print(p1 is p2)
+print(p2 is p3)
+print(p1 == p2)
+print(p1 < p3)
+print(p1 < p2)
+print(p1 >= p2)
+print(p1 != p2)
+
+
+print('\tThe total_ordering class decorator can be used to complete the comparison operators '
+      'without specifying each')
 
 
 
