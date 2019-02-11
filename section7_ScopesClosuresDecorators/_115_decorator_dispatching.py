@@ -18,7 +18,7 @@ def single_dispatch(fn):
 
 from html import escape
 
-
+# This becomes the default function associated with the object registry key
 @single_dispatch
 def htmlize(a):
     return escape(str(a))
