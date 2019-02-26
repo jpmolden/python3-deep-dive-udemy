@@ -29,3 +29,5 @@ code = '[x ** 2 for x in range(1000)]'
 result = timing.timeit(code, 1000)
 print(f"Result = {result}")
 # The timing module would also be useful if we could call it from the command line
+
+
